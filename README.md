@@ -21,7 +21,7 @@ A React hook for a card that grows into a full detail screen and shrinks back. T
 ## Install
 
 ```bash
-pnpm add react-morphcard
+bun add react-morphcard
 # or
 npm install react-morphcard
 ```
@@ -77,23 +77,23 @@ See [Getting started](https://morphcard.lucaspiera.com/docs/getting-started) and
 ## Develop
 
 ```bash
-pnpm install
-pnpm build          # dist/ with tsdown
-pnpm typecheck
-pnpm test           # builds dist, then unit tests (vitest), including an import of dist in plain Node
-pnpm test:e2e       # browser tests (Playwright, Chromium, desktop and phone)
-pnpm serve          # examples at http://127.0.0.1:3301/examples/index.html
+bun install
+bun run build          # dist/ with tsdown
+bun run typecheck
+bun run test           # builds dist, then unit tests (vitest), including an import of dist in plain Node
+bun run test:e2e       # browser tests (Playwright, Chromium, desktop and phone)
+bun run serve          # examples at http://127.0.0.1:3301/examples/index.html
 ```
 
 The hook drives an internal engine in `src/morph.ts` that has no React in it. The package does not export it. `tsdown.fixtures.config.ts` builds it to `examples/dist/engine.js` for the plain JavaScript demo in `examples/` and for the engine tests.
 
 The browser tests run at 1280×800 and 390×844. The engine tests cover open and close end states, reversing mid-transition, rapid clicks, reduced motion, missing and off-screen targets, scroll restore, focus return and leftover DOM. The React tests use `tests/fixtures/react` in StrictMode. They check where the card lands, how long `item` lives, unmounting mid-animation, live option changes and keyed cards. `scripts/record.mjs` records a transition frame by frame and `scripts/make-videos.sh` builds the videos used by the docs.
 
-The docs site lives in `docs-site/` (Fumadocs, static export).
+The docs site lives in `docs-site/` (Fumadocs, static export). It is a separate Bun project with its own `bun.lock`: run `bun install` and `bun run build` inside `docs-site/`.
 
 ## Publishing
 
-`package.json` is ready for npm (`exports`, types, `files`; `prepublishOnly` runs the typecheck, the build and the unit tests). Publishing is one command: `pnpm publish`.
+`package.json` is ready for npm (`exports`, types, `files`; `prepublishOnly` runs the typecheck, the build and the unit tests). Publishing is one command: `bun publish` (`npm publish` works too; both run `prepublishOnly`, which needs Bun).
 
 ## License
 

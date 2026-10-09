@@ -1,0 +1,31 @@
+# Dependabot: weekly dependency updates plus security PRs.
+# Alerts and security updates are switched on in the repo settings as well.
+version: 2
+
+updates:
+  # Bun lockfiles: the library at the root and the docs site (a separate Bun project).
+  - package-ecosystem: "bun"
+    directories:
+      - "/"
+      - "/docs-site"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    cooldown:
+      default-days: 3
+      semver-major-days: 14
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      # Next.js and its config/lint packages move together.
+      nextjs:
+        patterns: ["next", "eslint-config-next", "@next/*"]
+      minor-patch:
+        update-types: ["minor", "patch"]
+      security:
+        applies-to: "security-updates"
+        patterns: ["*"]

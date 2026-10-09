@@ -60,11 +60,11 @@ E2E coverage includes repeated open/close, retargeting, unmount while opening/cl
 Reproduce the engine checks:
 
 ```sh
-pnpm typecheck
-pnpm test
-pnpm check:package
-pnpm build:examples
-MORPHCARD_BROWSERS=chromium,firefox,webkit pnpm exec playwright test
+bun run typecheck
+bun run test
+bun run check:package
+bun run build:examples
+MORPHCARD_BROWSERS=chromium,firefox,webkit bunx playwright test
 ```
 
 Build and serve `docs-site/out`, then set `BASE` for `scripts/docs-morph-check.mjs`, `scripts/docs-logo-check.mjs` and `scripts/docs-anatomy-check.mjs`. The latter two accept `BROWSER=firefox` or `BROWSER=webkit`.
