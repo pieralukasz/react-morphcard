@@ -1,0 +1,29 @@
+# Dependabot: weekly dependency updates plus security PRs.
+# Alerts and security updates are switched on in the repo settings as well.
+version: 2
+
+updates:
+  # Docs site pnpm lockfile (v9). The root uses pnpm 12, which Dependabot does not support yet (max v10), so the library itself is not covered by version updates.
+  - package-ecosystem: "npm"
+    directory: "/docs-site"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    cooldown:
+      default-days: 3
+      semver-major-days: 14
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      # Next.js and its config/lint packages move together.
+      nextjs:
+        patterns: ["next", "eslint-config-next", "@next/*"]
+      minor-patch:
+        update-types: ["minor", "patch"]
+      security:
+        applies-to: "security-updates"
+        patterns: ["*"]
