@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Records the demo and writes the videos and posters used by the docs site
-# into docs-site/public/videos. Needs `pnpm build`, ffmpeg, and the example
+# into docs-site/public/videos. Needs `bun run build`, ffmpeg, and the example
 # server:  PORT=3301 node scripts/serve.mjs
 #   scripts/make-videos.sh [examples url]
 #

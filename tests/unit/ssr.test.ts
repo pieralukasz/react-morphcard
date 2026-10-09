@@ -31,7 +31,7 @@ console.log(JSON.stringify({
 
 describe("dist in Node without a DOM", () => {
   beforeAll(() => {
-    if (!existsSync(dist)) throw new Error("dist/index.js is missing: run `pnpm build` first");
+    if (!existsSync(dist)) throw new Error("dist/index.js is missing: run `bun run build` first");
   });
 
   it("starts with the use client directive", () => {

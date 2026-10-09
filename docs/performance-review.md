@@ -33,7 +33,7 @@ Timing measures only the synchronous `open()` / `close()` call. Animations are t
 This does not measure sustained FPS, GPU/raster cost, React rendering, input-to-paint, physical phones or memory use. A 4× CPU throttle is not a model of a specific device. Reduced setup work should help responsiveness, but that user-facing effect still needs device profiling.
 
 ```sh
-pnpm build:examples
+bun run build:examples
 # Before editing the engine, preserve a baseline bundle outside the cleaned output directory:
 cp examples/dist/engine.js /tmp/morph-perf-baseline.js
 # After editing, build again and run the example server in another terminal:
