@@ -1,0 +1,45 @@
+name: CI
+
+# Every pull request (Dependabot included) and every push to main is checked
+# here. Vercel does not build dependabot/** branches (docs-site/vercel.json),
+# so this workflow is the build check for those PRs.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  library:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # Bun version from packageManager in package.json.
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bun run typecheck
+      - run: bun run test
+
+  docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs-site
+    steps:
+      - uses: actions/checkout@v7
+      # Same Node major as the Vercel project (24.x).
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: oven-sh/setup-bun@v2
+      # Like Vercel (Root Directory docs-site): install and build docs-site
+      # only. It compiles the library from ../src, so no root install.
+      - run: bun install --frozen-lockfile
+      - run: bun run build
