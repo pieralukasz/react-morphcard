@@ -14,6 +14,7 @@
     "esbuild"
   ],
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "cn": "^0.4.0",
     "fumadocs-core": "16.15.15",
     "fumadocs-mdx": "15.4.5",

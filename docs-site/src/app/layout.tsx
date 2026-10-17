@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "@/components/provider";
@@ -36,6 +37,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );

@@ -49,7 +49,12 @@ export function VideoTile({ name, title, caption, slow = true, themed = true, wi
           })
         }
       />
-      <div className="mcs-media is-thumb" data-morph="media" data-morph-mode="box">
+      <div
+        className="mcs-media is-thumb"
+        data-orientation={width > height ? "wide" : "tall"}
+        data-morph="media"
+        data-morph-mode="box"
+      >
         {variants.map((file) => (
           // biome-ignore lint/performance/noImgElement: static export, plain posters
           <img key={file} src={asset(`/videos/${file}.png`)} alt="" width={width} height={height} data-theme={themeOf(file, themed)} loading="lazy" />

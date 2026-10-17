@@ -591,6 +591,33 @@
   .mch-grid > li:nth-child(n + 5) {
     display: none;
   }
+
+  /*
+   * One card per row on a phone: a square cover made each card nearly a
+   * screen tall. A 2:1 cover still flies into the 3:1 banner as one frame.
+   */
+  .mch-cover:not(.is-large) {
+    aspect-ratio: 2 / 1;
+  }
+
+  /* 52% of the cover's height, set from its width so it cannot stretch it. */
+  .mch-cover:not(.is-large) .mch-glyph {
+    width: 26%;
+    height: auto;
+  }
+
+  /*
+   * A desktop recording at its own shape instead of a 4:3 crop that cut the
+   * window's edges.
+   */
+  .mcs-media.is-thumb[data-orientation="wide"] {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Country codes in the demo's routes: 11px instead of 10px. */
+  .mc-live .mc-demo .mc-route i {
+    font-size: 0.7334em;
+  }
 }
 
 .mch-card {

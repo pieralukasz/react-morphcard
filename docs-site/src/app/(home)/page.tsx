@@ -95,7 +95,7 @@ export default function HomePage() {
         </p>
       </Section>
 
-      <section className="mx-auto w-full max-w-5xl px-6 py-16">
+      <section className="mx-auto w-full max-w-5xl px-6 py-10 sm:py-16">
         <div className="grid items-center gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_390px]">
           <div>
             <p className="mc-label font-medium text-fd-primary">Same hook, small screen</p>
@@ -137,7 +137,7 @@ export default function HomePage() {
 
 function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
   return (
-    <section className="mx-auto w-full max-w-[880px] px-6 py-14">
+    <section className="mx-auto w-full max-w-[880px] px-6 py-10 sm:py-14">
       <p className="mc-label font-medium text-fd-primary">{eyebrow}</p>
       <h2 className="mt-2 mb-8 text-3xl font-bold tracking-tight">{title}</h2>
       {children}
